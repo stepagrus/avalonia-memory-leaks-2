@@ -1,0 +1,52 @@
+<Window xmlns="https://github.com/avaloniaui"
+		xmlns:compilerservices="using:System.Runtime.CompilerServices"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:local="using:AvaloniaApplication3"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		mc:Ignorable="d" Width="400" Height="250"
+		x:DataType="local:MainViewModel"
+		x:Class="AvaloniaApplication3.MainWindow"
+		Title="AvaloniaApplication3">
+
+	<DockPanel>
+
+		<Menu DockPanel.Dock="Top">
+			<MenuItem Header="Start/Stop"
+			 Command="{Binding StartStopCommand}"/>
+		</Menu>
+
+		<ListBox DockPanel.Dock="Left"
+				 ItemsSource="{Binding Items}"
+				 SelectedItem="{Binding SelectedItem}"
+				 Width="100">
+			<ListBox.ItemTemplate>
+				<DataTemplate x:DataType="local:ItemViewModel">
+					<TextBlock Text="{Binding Name}"/>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+
+		<ContentControl Content="{Binding SelectedItem}">
+
+			<ContentControl.DataTemplates>
+				<DataTemplate x:DataType="local:ItemViewModel">
+					<StackPanel>
+						<TextBlock Text="{Binding Name}"/>
+
+						<DataGrid ItemsSource="{Binding Rows}">
+							<DataGrid.Columns>
+								<DataGridTextColumn Header="Name"
+													Binding="{Binding Name}"/>
+
+							</DataGrid.Columns>
+						</DataGrid>
+					</StackPanel>
+				</DataTemplate>
+
+			</ContentControl.DataTemplates>
+
+		</ContentControl>
+
+	</DockPanel>
+</Window>

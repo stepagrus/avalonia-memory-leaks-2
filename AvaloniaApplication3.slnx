@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="readme.md" />
+  </Folder>
+  <Project Path="AvaloniaApplication3/AvaloniaApplication3.csproj" />
+</Solution>
