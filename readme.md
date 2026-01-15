@@ -1,5 +1,1 @@
-Leaks of objects 
-Avalonia.Reactive.AnonymousObserver<AvaloniaPropertyChangedEventArgs>, 
-and
-System.WeakReference<IWeakEventSubscriber<PropertyChangedEventArgs>>
-through DataGrid
+Leaks of objects `Avalonia.Reactive.AnonymousObserver<AvaloniaPropertyChangedEventArgs>` through ProDataGrid 11.3.9-preview.26
