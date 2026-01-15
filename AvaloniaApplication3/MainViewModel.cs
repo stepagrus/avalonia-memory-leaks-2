@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 
 namespace AvaloniaApplication3;
 
@@ -36,6 +36,8 @@ internal partial class MainViewModel : ObservableObject
           await Task.Delay(Delay);
           SelectedItem = Items[1];
         }
+
+        SelectedItem = null;
         _cts = null;
       });
     }
