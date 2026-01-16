@@ -21,6 +21,6 @@
 		</PackageReference>
 		<PackageReference Include="Avalonia.Themes.Simple" Version="11.3.11" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-		<PackageReference Include="ProDataGrid" Version="11.3.9-preview.26" />
+		<PackageReference Include="ProDataGrid" Version="11.3.9-preview.27" />
 	</ItemGroup>
 </Project>
