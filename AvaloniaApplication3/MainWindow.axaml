@@ -7,7 +7,7 @@
 		mc:Ignorable="d" Width="400" Height="250"
 		x:DataType="local:MainViewModel"
 		x:Class="AvaloniaApplication3.MainWindow"
-		Title="AvaloniaApplication3 v4">
+		Title="AvaloniaApplication3 v5">
 
 	<DockPanel>
 
@@ -17,12 +17,12 @@
 		</Menu>
 
 		<ListBox DockPanel.Dock="Left"
-				 ItemsSource="{Binding Items}"
+				 ItemsSource="{Binding Items, Mode=OneTime}"
 				 SelectedItem="{Binding SelectedItem}"
 				 Width="100">
 			<ListBox.ItemTemplate>
 				<DataTemplate x:DataType="local:ItemViewModel">
-					<TextBlock Text="{Binding Name}"/>
+					<TextBlock Text="{Binding Name, Mode=OneTime}"/>
 				</DataTemplate>
 			</ListBox.ItemTemplate>
 		</ListBox>
@@ -32,12 +32,12 @@
 			<ContentControl.DataTemplates>
 				<DataTemplate x:DataType="local:ItemViewModel">
 					<StackPanel>
-						<TextBlock Text="{Binding Name}"/>
+						<TextBlock Text="{Binding Name, Mode=OneTime}"/>
 
-						<DataGrid ItemsSource="{Binding Rows}">
+						<DataGrid ItemsSource="{Binding Rows, Mode=OneTime}">
 							<DataGrid.Columns>
 								<DataGridTextColumn Header="Name"
-													Binding="{Binding Name}"/>
+													Binding="{Binding Name, Mode=OneTime}"/>
 
 							</DataGrid.Columns>
 						</DataGrid>
