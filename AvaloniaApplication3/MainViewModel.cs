@@ -1,9 +1,10 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Avalonia.Threading;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace AvaloniaApplication3;
 
@@ -31,13 +32,22 @@ internal partial class MainViewModel : ObservableObject
         {
           const int Delay = 20;
           await Task.Delay(Delay);
-          SelectedItem = Items[0];
+          await Dispatcher.UIThread.InvokeAsync(() =>
+          {
+            SelectedItem = Items[0];
+          });
 
           await Task.Delay(Delay);
-          SelectedItem = Items[1];
+          await Dispatcher.UIThread.InvokeAsync(() =>
+          {
+            SelectedItem = Items[1];
+          });
         }
 
-        SelectedItem = null;
+        await Dispatcher.UIThread.InvokeAsync(() =>
+        {
+          return SelectedItem = null;
+        });
         _cts = null;
       });
     }

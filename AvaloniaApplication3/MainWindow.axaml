@@ -7,7 +7,7 @@
 		mc:Ignorable="d" Width="400" Height="250"
 		x:DataType="local:MainViewModel"
 		x:Class="AvaloniaApplication3.MainWindow"
-		Title="AvaloniaApplication3">
+		Title="AvaloniaApplication3 v4">
 
 	<DockPanel>
 
