@@ -1,4 +1,5 @@
-﻿using Avalonia.Threading;
+﻿using System.Reflection;
+using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -9,7 +10,11 @@ internal partial class MainViewModel : ObservableObject
   public MainViewModel()
   {
     Items = [new ItemViewModel("A"), new ItemViewModel("B")];
+
+    Title = GetVersion();
   }
+
+  public string Title { get; }
 
   public List<ItemViewModel> Items { get; }
 
@@ -53,30 +58,14 @@ internal partial class MainViewModel : ObservableObject
     }
   }
 
+  private string GetVersion()
+  {
+    var informationalVersionAttribute = typeof(Avalonia.Controls.DataGrid).Assembly
+          .GetCustomAttributes(typeof(AssemblyInformationalVersionAttribute), false)
+          .FirstOrDefault() as AssemblyInformationalVersionAttribute;
+
+    return informationalVersionAttribute?.InformationalVersion.Split("+").FirstOrDefault() ?? "-";
+  }
+
   private CancellationTokenSource? _cts;
 }
-
-public class ItemViewModel
-{
-  public ItemViewModel(string name)
-  {
-    Name = name;
-    Rows = Enumerable.Range(1, 10)
-      .Select(x => new RowViewModel($"name {x}"))
-      .ToList();
-  }
-  public string Name { get; set; }
-
-
-  public List<RowViewModel> Rows { get; }
-}
-
-public partial class RowViewModel
-{
-  public RowViewModel(string name)
-  {
-    Name = name;
-  }
-  public string Name { get; }
-}
-
